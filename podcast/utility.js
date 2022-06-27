@@ -8,7 +8,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable import/no-mutable-exports */
 const checkbox = document.querySelectorAll('input[type="checkbox"]');
-let currentState = "None";
+let currentState = 'None';
 let currentStateRef = null;
 const loopThrough = (startPos, endPos, temp) => {
   for (let i = startPos; i < endPos - 1; i++) {
@@ -29,9 +29,9 @@ const changeStatesOfKey = (event) => {
 const changeWithoutShift = (event) => {
   currentStateRef = event;
   if (event.target.checked) {
-    currentState = "checked";
+    currentState = 'checked';
   } else {
-    currentState = "unchecked";
+    currentState = 'unchecked';
   }
 };
 const changeSettingsTillEnd = (event) => {
@@ -42,8 +42,8 @@ const changeSettingsTillEnd = (event) => {
 };
 const changeWithShift = (event) => {
   if (
-    (currentState === "checked" && event.target.checked) ||
-    (currentState === "unchecked" && !event.target.checked)
+    (currentState === 'checked' && event.target.checked) ||
+    (currentState === 'unchecked' && !event.target.checked)
   ) {
     changeStatesOfKey(event);
   } else {
