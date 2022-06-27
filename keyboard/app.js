@@ -1,11 +1,11 @@
-import {setJiggleToAnotherKey,
-    keyCheck,
-    preventException} from './utility.js';
-let listOfAllKeysByClassName = document.getElementsByClassName("key");
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/extensions */
+import * as utilityJs from "./utility.js";
 
-window.addEventListener("keydown", (event)=>{
-    
-    let keyVal = event.key.toString().toUpperCase();
-    preventException(event, keyVal); 
-    keyCheck(keyVal);
+const listOfAllKeysByClassName = document.getElementsByClassName("key");
+
+window.addEventListener("keydown", (event) => {
+  const keyVal = event.key.toString().toUpperCase();
+  utilityJs.preventException(event, keyVal);
+  utilityJs.keyCheck(keyVal);
 });

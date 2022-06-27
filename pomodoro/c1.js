@@ -1,8 +1,10 @@
-import{
+import {
+  alterSettings,
+  switcher
+  // eslint-disable-next-line import/extensions
+} from "./utility.js";
 
-    alterSettings, switcher 
-} from './utility.js';
-let settingsButtonRef = document.getElementById("settingsTBR");
-let startButton = document.getElementById("timerTrigger");
+const settingsButtonRef = document.getElementById("settingsTBR");
+const startButton = document.getElementById("timerTrigger");
 startButton.addEventListener("click", switcher);
 settingsButtonRef.addEventListener("click", alterSettings);

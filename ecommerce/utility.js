@@ -1,3 +1,6 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-param-reassign */
+/* eslint-disable eqeqeq */
 const menuItems = [
   {
     name: "French Fries with Ketchup",
@@ -42,35 +45,34 @@ const menuItems = [
     count: 0
   }
 ];
-let billSectionRef = document.querySelector(".totals");
-let button = document.querySelectorAll(".add");
-let cartRef = document.querySelector(".cart-summary");
-let emptyElement = document.querySelector(".empty");
+const billSectionRef = document.querySelector(".totals");
+const button = document.querySelectorAll(".add");
+const cartRef = document.querySelector(".cart-summary");
+const emptyElement = document.querySelector(".empty");
 
-let updateBill = () => {
+const updateBill = () => {
   let totalAmount = 0;
   let tax = 0;
-  Array.from(cartRef.children).forEach((element, idx1) => {
+  Array.from(cartRef.children).forEach((element) => {
     totalAmount +=
       element.children[3].innerHTML.slice(1) *
       element.children[2].children[1].innerHTML;
   });
   tax = totalAmount * 0.0975;
-  billSectionRef.children[0].children[1].innerHTML =
-    "$ " + totalAmount.toFixed(2);
-  billSectionRef.children[1].children[1].innerHTML = "$ " + tax.toFixed(2);
-  billSectionRef.children[2].children[1].innerHTML =
-    "$ " +
-    (parseFloat(tax.toFixed(2)) + parseFloat(totalAmount.toFixed(2))).toFixed(
-      2
-    );
+  billSectionRef.children[0].children[1].innerHTML = `$ ${totalAmount.toFixed(
+    2
+  )}`;
+  billSectionRef.children[1].children[1].innerHTML = `$ ${tax.toFixed(2)}`;
+  billSectionRef.children[2].children[1].innerHTML = `$ ${(
+    parseFloat(tax.toFixed(2)) + parseFloat(totalAmount.toFixed(2))
+  ).toFixed(2)}`;
 };
 const switchButtonAccessibility = (buttonRef) => {
   buttonRef.disabled = !buttonRef.disabled;
 };
 
 const updateMenu = (text) => {
-  button.forEach((buttonRef, buttonIndex) => {
+  button.forEach((buttonRef) => {
     if (buttonRef.parentNode.children[0].innerHTML === text) {
       buttonRef.parentNode.children[2].innerHTML = "Add To Cart";
       buttonRef.parentNode.children[2].className = "add";
@@ -79,7 +81,7 @@ const updateMenu = (text) => {
   });
 };
 const updateList = (childText, idx) => {
-  Array.from(cartRef.children).forEach((element, idx1) => {
+  Array.from(cartRef.children).forEach((element) => {
     if (
       childText == element.children[1].children[0].innerHTML &&
       menuItems[idx].count == 0
@@ -89,15 +91,14 @@ const updateList = (childText, idx) => {
     }
     if (Array.from(cartRef.children).length === 0) {
       emptyElement.innerHTML = "Your cart is empty.";
-      console.log("hi");
     }
     element.children[0].children[1].innerHTML =
       element.children[2].children[1].innerHTML;
   });
 };
 
-const switchAddToCartButton = (buttonRef, buttonIndex) => {
-  //tbi
+const switchAddToCartButton = (buttonRef) => {
+  // tbi
   if (buttonRef.className === "in-cart") {
     buttonRef.className = "add";
     buttonRef.innerHTML = "Add To Cart";
@@ -110,14 +111,14 @@ const switchAddToCartButton = (buttonRef, buttonIndex) => {
     switchButtonAccessibility(buttonRef);
   }
 };
-let getImageFrame = (idx) => {
-  let imageParent = document.createElement("div");
+const getImageFrame = (idx) => {
+  const imageParent = document.createElement("div");
   imageParent.className = "plate";
-  let imageItself = document.createElement("img");
+  const imageItself = document.createElement("img");
   imageItself.className = "plate";
   imageItself.alt = menuItems[idx].alt;
-  imageItself.src = "./images/" + menuItems[idx].image;
-  let quantityOfItem = document.createElement("div");
+  imageItself.src = `./images/${menuItems[idx].image}`;
+  const quantityOfItem = document.createElement("div");
   quantityOfItem.className = "quantity";
   quantityOfItem.innerHTML = menuItems[idx].count;
 
@@ -125,11 +126,11 @@ let getImageFrame = (idx) => {
   imageParent.append(quantityOfItem);
   return imageParent;
 };
-let contentOfItemFn = (idx) => {
-  let contentMainFrame = document.createElement("div");
+const contentOfItemFn = (idx) => {
+  const contentMainFrame = document.createElement("div");
   contentMainFrame.className = "content";
-  let menu = document.createElement("p");
-  let price = document.createElement("p");
+  const menu = document.createElement("p");
+  const price = document.createElement("p");
   menu.className = "menu-item";
   menu.innerHTML = menuItems[idx].alt;
   price.className = "price";
@@ -138,18 +139,18 @@ let contentOfItemFn = (idx) => {
   contentMainFrame.append(price);
   return contentMainFrame;
 };
-let getAltQnt = (idx, childText) => {
-  let parentOfAlt = document.createElement("div");
+const getAltQnt = (idx, childText) => {
+  const parentOfAlt = document.createElement("div");
   parentOfAlt.className = "quantity-wrapper";
-  let decreaseQnt = document.createElement("button");
-  let increaseQnt = document.createElement("button");
-  let quantity = document.createElement("div");
+  const decreaseQnt = document.createElement("button");
+  const increaseQnt = document.createElement("button");
+  const quantity = document.createElement("div");
   decreaseQnt.className = "decrease";
-  let imgTBD1 = document.createElement("img");
+  const imgTBD1 = document.createElement("img");
   imgTBD1.src = "images/chevron.svg";
   decreaseQnt.append(imgTBD1);
   increaseQnt.className = "increase";
-  let imgTBD2 = document.createElement("img");
+  const imgTBD2 = document.createElement("img");
   imgTBD2.src = "images/chevron.svg";
   increaseQnt.append(imgTBD2);
   quantity.className = "quantity";
@@ -173,19 +174,19 @@ let getAltQnt = (idx, childText) => {
   parentOfAlt.append(increaseQnt);
   return parentOfAlt;
 };
-let getSubtotalFrame = (idx) => {
-  let divTag = document.createElement("div");
+const getSubtotalFrame = (idx) => {
+  const divTag = document.createElement("div");
   divTag.className = "subtotal";
-  divTag.innerHTML = "$" + (menuItems[idx].count * menuItems[idx].price) / 100;
+  divTag.innerHTML = `$${(menuItems[idx].count * menuItems[idx].price) / 100}`;
   return divTag;
 };
 const createCartFrame = (idx, childText) => {
   menuItems[idx].count = 1;
-  let parentOfFrame = document.createElement("li");
-  let imageOfFood = getImageFrame(idx);
-  let contentOfItem = contentOfItemFn(idx);
-  let altQuantity = getAltQnt(idx, childText);
-  let subtotalFrame = getSubtotalFrame(idx);
+  const parentOfFrame = document.createElement("li");
+  const imageOfFood = getImageFrame(idx);
+  const contentOfItem = contentOfItemFn(idx);
+  const altQuantity = getAltQnt(idx, childText);
+  const subtotalFrame = getSubtotalFrame(idx);
   parentOfFrame.append(imageOfFood);
   parentOfFrame.append(contentOfItem);
   parentOfFrame.append(altQuantity);
@@ -199,8 +200,8 @@ const addItemInTheCart = (buttonRef, idx) => {
   return createCartFrame(idx, childText.innerHTML);
 };
 const addItemToCart = (buttonRef, buttonIndex) => {
-  switchAddToCartButton(buttonRef, buttonIndex);
-  let cartPageRef = addItemInTheCart(buttonRef, buttonIndex);
+  switchAddToCartButton(buttonRef);
+  const cartPageRef = addItemInTheCart(buttonRef, buttonIndex);
   cartRef.append(cartPageRef);
   emptyElement.innerHTML = "";
 };

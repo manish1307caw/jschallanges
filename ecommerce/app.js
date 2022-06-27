@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable prefer-const */
 import { updateBill, addItemToCart } from "./utility.js";
 
 let button = document.querySelectorAll(".add");
