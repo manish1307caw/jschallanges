@@ -19,6 +19,8 @@
   "homepage": "https://github.com/manish1307caw/jschallanges#readme",
   "devDependencies": {
     "eslint": "^8.18.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "husky": "^8.0.1",
     "prettier": "^2.7.1",
     "pretty-quick": "^3.1.3",
